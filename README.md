@@ -1,5 +1,4 @@
 # REST API NODE JS
-
-## Comenzando 🚀
-
 Base REST API con Node js.
+## Comenzando 🚀
+Recuerde ejecutar ```npm install```para reconstruir los módulos de Node. 
