@@ -36,7 +36,10 @@ const userPut = async(req, res = response) => {
     }
 
     const usuario = await Usuario.findByIdAndUpdate(id, resto);
-    res.json(usuario)
+    res.json({
+        msg: 'Update usar',
+        user: usuario
+    })
 }
 
 const userPost = async(req, res = response) => {
@@ -52,7 +55,8 @@ const userPost = async(req, res = response) => {
     usuario.save();
 
     res.json({
-        usuario
+        msg: 'Post user',
+        user: usuario
     })
 }
 
@@ -60,20 +64,18 @@ const userPost = async(req, res = response) => {
 const userDelete = async(req, res = response) => {
 
     const { id } = req.params;
-    //Elimina fisicamente de BDD Mongo
-    //const usuario = await Usuario.findByIdAndDelete(id);
-
-    //Cambia estado a falso, elimina teoricamente.
     const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
 
+    var msg = usuario.estado ? 'Usuario eliminado' : 'Usuario ya había sido eliminado.'
+
     res.json({
-        usuario
+        msg: msg
     })
 }
 
 const userPatch = (req, res = response) => {
     res.json({
-        msg: 'patch Api - userPatch controller'
+        msg: 'patch Api - userPatch (No implementado.)'
     })
 }
 
